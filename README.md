@@ -42,12 +42,21 @@ AITV 把 AI 资讯整理成连续播放的节目。浏览器根据音频与时�
 git clone https://github.com/joeseesun/aitv.git
 cd aitv
 npm install -g wrangler
+npm install
 npm test
 npm run seed
 npm run dev
 ```
 
 打开 `http://localhost:8787`。`npm run seed` 只把仓库样例写入本地 KV，方便预览画面；不调用模型或语音服务。样例音频和配图存储在独立 R2 中，仓库不包含媒体文件，因此本地预览没有声音和配图。完整收听可使用在线演示；自建实例需要准备自己的媒体与节目单。
+
+## 老设备兼容版
+
+系统 WebView 停在旧版本的安卓设备（例如 Android 8 的电视盒子、触屏音箱，内核 Chrome 61）打不开主站：脚本语法和 CSS 太新，页面停在「正在连接直播…」。`npm run build` 会额外生成兼容版 `/legacy/`：esbuild 把播放器降级到 chrome61，补齐缺的 API，用 JS 计算原来靠 container query 单位缩放的画面，画面铺满屏幕、去掉页脚，小屏上底栏字号有下限。
+
+本地预览：`npm run legacy:serve`（`/api`、`/audio`、`/img` 转发到线上），设备上 `adb reverse tcp:8788 tcp:8788` 后打开 `http://localhost:8788/legacy/`。
+
+<img src="docs/assets/android-legacy.png" width="480" alt="小米 LX04（Android 8.1 / Chrome 61）上的兼容版画面">
 
 ## 自建部署
 
@@ -109,12 +118,17 @@ Requirements: Node.js 22+ and Wrangler 4.
 git clone https://github.com/joeseesun/aitv.git
 cd aitv
 npm install -g wrangler
+npm install
 npm test
 npm run seed
 npm run dev
 ```
 
 Visit `http://localhost:8787`. The seed command writes only to local KV and starts no paid generation. Repository fixtures support visual preview; audio and images are stored separately in R2 and are not included. Use the live demo to listen, or provide your own media for self-hosting.
+
+## Older devices
+
+Devices whose system WebView is stuck on an old Chromium (e.g. Android 8 TV boxes and smart displays on Chrome 61) cannot run the main site. `npm run build` also emits a compatibility build at `/legacy/`: the player down-levelled to chrome61 with esbuild, polyfills, a JS replacement for container-query units, and a full-screen layout. Preview it locally with `npm run legacy:serve`.
 
 ## Self-hosting
 

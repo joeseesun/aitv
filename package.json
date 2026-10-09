@@ -6,10 +6,13 @@
     "dev": "npm run build && wrangler dev --local --port 8787",
     "seed": "node scripts/seed-local.mjs",
     "test": "node --test test/*.test.js",
-    "build": "rm -rf public/screen && cp -r screen public/screen",
-    "deploy": "node scripts/deploy.mjs"
+    "build": "rm -rf public/screen && cp -r screen public/screen && node scripts/build-legacy.mjs",
+    "deploy": "node scripts/deploy.mjs",
+    "legacy:serve": "node scripts/legacy-serve.mjs"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  },
   "license": "MIT",
   "description": "AI 今天：持续更新的 AI 新闻台 | A live AI news channel",
   "repository": {

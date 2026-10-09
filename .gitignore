@@ -4,6 +4,7 @@ node_modules/
 *.log
 .venv/
 public/screen/
+public/legacy/
 releases/*/audio
 node_modules
 audio-cache
