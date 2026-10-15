@@ -7,7 +7,7 @@ import { makeDeepSeek } from "../src/llm.js";
 
 const path = process.argv[2] || new URL("../public/seed.json", import.meta.url);
 const seed = JSON.parse(readFileSync(path, "utf8"));
-const llm = process.env.DEEPSEEK_API_KEY ? makeDeepSeek({ apiKey: process.env.DEEPSEEK_API_KEY, model: process.env.AITV_BRIEF_MODEL || "deepseek-chat" }) : null;
+const llm = process.env.DEEPSEEK_API_KEY ? makeDeepSeek({ apiKey: process.env.DEEPSEEK_API_KEY, model: process.env.AITV_BRIEF_MODEL || "deepseek-flash" }) : null;
 
 for (const it of seed.items) {
   const lines = (it.script || []).map((s) => s.text);

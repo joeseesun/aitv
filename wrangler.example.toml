@@ -17,6 +17,8 @@ binding = "AUDIO"
 bucket_name = "my-aitv-audio"
 
 [vars]
+BRIEF_MODEL = "deepseek-flash"
+SCRIPT_MODEL = "deepseek-flash"
 AUTO_PUBLISH = "0"
 RANKED_SOURCES = "producthunt,github"
 PIPELINE_MAX_NEW_PER_DAY = "0"
