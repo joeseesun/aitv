@@ -22,6 +22,8 @@ bucket_name = "aitv-audio"
 crons = ["*/15 * * * *"]
 
 [vars]
+BRIEF_MODEL = "deepseek-flash"
+SCRIPT_MODEL = "deepseek-flash"
 AUTO_PUBLISH = "1"               # 乔木 2026-10-09 13:34 批准「开自动上台」：做好的条目经 switchAt 插进时间线
 # 榜单类按上榜时间算新鲜度（PH = 日榜结束、GitHub = 第一次在 trending 看到）；"none" 全关 → 按 publishedAt
 RANKED_SOURCES = "producthunt,github"

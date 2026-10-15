@@ -11,8 +11,8 @@ import { makeDeepSeek } from "../src/llm.js";
 
 const N = Number(process.argv[2] || 20);
 const apiKey = process.env.DEEPSEEK_API_KEY;
-const briefLLM = makeDeepSeek({ apiKey, model: process.env.AITV_BRIEF_MODEL || "deepseek-chat" });
-const scriptLLM = makeDeepSeek({ apiKey, model: process.env.AITV_SCRIPT_MODEL || "deepseek-v4-pro" });
+const briefLLM = makeDeepSeek({ apiKey, model: process.env.AITV_BRIEF_MODEL || "deepseek-flash" });
+const scriptLLM = makeDeepSeek({ apiKey, model: process.env.AITV_SCRIPT_MODEL || "deepseek-flash" });
 const log = (s) => process.stderr.write(s + "\n");
 
 const { items, errors } = await fetchAll();

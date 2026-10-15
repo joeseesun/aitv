@@ -1,5 +1,5 @@
 // 定时流水线（Worker cron）：每条一个状态机，每一步的结果都存进 KV，挂了下一轮从断点接着跑。
-//   fetch/去重 → read（读原文）→ brief（deepseek-chat）→ script（deepseek-v4-pro）→ validate → tts（豆包 → R2）→ ready
+//   fetch/去重 → read（读原文）→ brief（deepseek-flash）→ script（deepseek-flash）→ validate → tts（豆包 → R2）→ ready
 // KV：
 //   "pipe:item:<id>" → { id, item, step, status, results: { read, brief, script, validate, tts }, tries, errors, ... }
 //   "pipe:index"     → { pending: [id], ready: [id], dropped: [{id, step, why, at}], seen: [id], daily: { date, started }, last }

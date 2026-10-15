@@ -108,8 +108,8 @@ export function makeDeps(env, now = Date.now()) {
     now, kv, r2: env.AUDIO, fetch: (...a) => fetch(...a),
     ttsCap: Number(env.TTS_DAILY_CAP ?? 40),
     ranked: parseRanked(env.RANKED_SOURCES),
-    briefLLM: makeDeepSeek({ apiKey: key, model: env.BRIEF_MODEL || "deepseek-chat" }),
-    scriptLLM: makeDeepSeek({ apiKey: key, model: env.SCRIPT_MODEL || "deepseek-v4-pro", timeoutMs: 300_000 }),
+    briefLLM: makeDeepSeek({ apiKey: key, model: env.BRIEF_MODEL || "deepseek-flash" }),
+    scriptLLM: makeDeepSeek({ apiKey: key, model: env.SCRIPT_MODEL || "deepseek-flash", timeoutMs: 300_000 }),
     tts: (payload) => synthesize(env.DOUBAO_TTS_ACCESS_TOKEN, payload),
   };
 }
